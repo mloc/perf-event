@@ -606,7 +606,7 @@ impl std::ops::Index<&Counter> for Counts {
 
 impl std::fmt::Debug for Counts {
     fn fmt(&self, fmt: &mut std::fmt::Formatter) -> std::fmt::Result {
-        fmt.debug_map().entries(self.into_iter()).finish()
+        fmt.debug_map().entries(self).finish()
     }
 }
 

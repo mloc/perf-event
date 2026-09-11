@@ -134,6 +134,7 @@ macro_rules! expand_trait_method {
         #[doc = stringify!($ioctl)]
         /// .
         #[allow(non_snake_case)]
+        #[allow(clippy::missing_safety_doc)]
         unsafe fn $name(&mut self, _fd: c_int, _arg: $arg_type) -> c_int {
             panic!(
                 "unimplemented `perf_event::hooks::Hooks` method: {}",

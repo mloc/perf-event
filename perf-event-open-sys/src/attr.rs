@@ -157,6 +157,7 @@ mod tests {
     /// inline union and the deref stack in this file needs to be updated.
     #[test]
     fn access_attr_fields() {
+        #![allow(unused_assignments, clippy::field_reassign_with_default)]
         let mut attr = perf_event_attr::default();
 
         attr.type_ = 0;
