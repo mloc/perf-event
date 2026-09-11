@@ -1,11 +1,19 @@
 # Release notes for `perf-event-open-sys`
 
+## 7.0.0
+
+-   All bindings have been regenerated from the headers for Linux v7.1.13.
+
 ## 6.0.0
 
 -   All bindings have been regenerated from the headers for Linux v6.13.9.
 
 -   The bindings no longer include a large number of types and constants that
     are not related to `perf_event_open`.
+
+-   Added support for 64-bit PowerPC (`powerpc64`).
+
+-   Added support for 64-bit LoongArch (`loongarch64`).
 
 ## 5.0.0
 

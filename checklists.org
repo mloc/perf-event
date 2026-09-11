@@ -23,6 +23,7 @@
 - [ ] ~cargo fmt~
 - [ ] ~cargo clippy --workspace --tests~
 - [ ] ~cargo test --workspace~
+- [ ] Update ~perf-event-open-sys/RELEASE-NOTES.md~.
 - [ ] ~cargo publish -p perf-event-open-sys --dry-run~
 - [ ] ~cargo publish -p perf-event-open-sys~
 - [ ] Create a new tag called `perf-event-open-sys-vX.Y.Z` and push it to the repo.
