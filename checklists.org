@@ -1,0 +1,62 @@
+* Crate release
+** ~perf-event-open-sys~
+- [ ] Run the command:
+
+  #+BEGIN_SRC sh
+  cd perf-event-open-sys && cargo semver-checks
+  #+END_SRC
+
+  You can use [[https://github.com/obi1kenobi/cargo-semver-checks][cargo semver-checks]] to check whether the resulting
+  changes are semver-compatible. We don't always literally follow the
+  standards set by cargo-semver-checks but it is generally a good
+  starting point for determining whether the change is a breaking one.
+  Changes we would tolerate:
+
+  - Changes to the signatures of ~new_bitfield_N~ functions. These
+    take an argument for every bitfield in the container member they
+    construct, so they are affected any time a bitfield is added.
+    These functions are unweildy and rarely used.
+
+- [ ] new version number (as directed by above)
+  - [ ] ~perf-event-open-sys/Cargo.toml~
+  - [ ] ~perf-event/Cargo.toml~ as dependency
+- [ ] ~cargo fmt~
+- [ ] ~cargo clippy --workspace --tests~
+- [ ] ~cargo test --workspace~
+- [ ] ~cargo publish -p perf-event-open-sys --dry-run~
+- [ ] ~cargo publish -p perf-event-open-sys~
+- [ ] Create a new tag called `perf-event-open-sys-vX.Y.Z` and push it to the repo.
+** ~perf-event~
+- [ ] Run the command:
+
+  #+BEGIN_SRC sh
+  cd perf-event && cargo semver-checks
+  #+END_SRC
+
+  See notes above about ~cargo semver-checks~.
+
+- [ ] new version number (as directed by above)
+  - [ ] ~perf-event/Cargo.toml~
+- [ ] ~cargo fmt~
+- [ ] ~cargo clippy --workspace --tests~
+- [ ] ~cargo test --workspace~
+- [ ] ~cargo publish -p perf-event --dry-run~
+- [ ] ~cargo publish -p perf-event-open-sys~
+- [ ] Create a new tag called `perf-event-vX.Y.Z` and push it to the repo.
+* Generate bindings for a new Linux kernel version
+- [ ] In ~perf-event-open-sys/regenerate.sh~, update ~version~ to the
+  desired Linux kernel version. You don't need to download the sources
+  yourself; the script fetches them, and caches them in the ~target~
+  directory.
+- [ ] Run the command:
+
+  #+BEGIN_SRC
+  cd perf-event-open-sys && ./regenerate.sh
+  #+END_SRC
+
+  This fetches the kernel sources if necessary, runs bindgen, and
+  splices its output into the `bindings` module's source code,
+  preserving the documentation.
+- [ ] ~cargo test --workspace~
+- [ ] Consider releasing a new version of the ~perf-event-open-sys~
+  crate; see checklist above.

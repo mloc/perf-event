@@ -12,7 +12,7 @@ cd "$(dirname "$0")"
 # - the rustc target triple, and,
 # - the clang target triple.
 #
-# For some architectures (e.g. x86_64) this will all be the same. For others,
+# For some architectures (e.g. x86_64) these will all be the same. For others,
 # (e.g. RISC-V) they will all be different.
 #
 # Here's how to find each one:
@@ -36,7 +36,7 @@ cd "$(dirname "$0")"
 # Updating the linux kernel version
 # =================================
 # The full kernel version used is specified right here:
-version=6.13.9
+version=7.1.13
 #
 # In order to generate bindings for a different kernel change the version and
 # rerun the script. See https://kernel.org/ to find available kernel versions.
