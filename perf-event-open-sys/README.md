@@ -64,4 +64,15 @@ features are added at a steady pace.
 
 To update the generated bindings, consult the checklist in `../checklists.org`.
 
+You can use [cargo semver-checks] to check whether the resulting changes are
+semver-compatible. We don't always literally follow the standards set by
+cargo-semver-checks but it is generally a good starting point for determining
+whether the change is a breaking one. Changes we would tolerate:
+
+- Changes to the signatures of `new_bitfield_N` functions. These
+  take an argument for every bitfield in the container member they
+  construct, so they are affected any time a bitfield is added.
+  These functions are unweildy and rarely used.
+
 [bindgen]: https://crates.io/crates/bindgen
+[cargo semver-checks]: https://github.com/obi1kenobi/cargo-semver-checks
